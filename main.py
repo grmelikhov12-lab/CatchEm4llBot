@@ -34,6 +34,15 @@ def attack_pok(message):
     else:
             bot.send_message(message.chat.id, "Чтобы атаковать, нужно ответить на сообщения того, кого хочешь атаковать")
 
+@bot.message_handler(commands=['feed'])
+def feed_pok(message):
+    if message.from_user.username in Pokemon.pokemons.keys():
+        pok=Pokemon.pokemons[message.from_user.username]
+        res=pok.feed()
+        bot.send_message(message.chat.id, res)
+    else:
+        bot.send_message(message.user.id, "У вас нет покемона")
+
 
 @bot.message_handler(commands=['info'])
 def info_pok(message):
@@ -43,5 +52,4 @@ def info_pok(message):
         bot.send_photo(message.chat.id, pok.show_img())
         
 bot.infinity_polling(none_stop=True)
-
 
