@@ -3,7 +3,13 @@
 ## bot commands are:
 ```
 go
+```
+```
 attack
+```
+```
 feed
+```
+```
 info
 ```
