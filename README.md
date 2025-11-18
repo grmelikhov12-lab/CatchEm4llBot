@@ -1,11 +1,3 @@
-# Pokemon TG Bot
-## Commands:
-```
+**# TeleBot Pokemon bot**
 
-/go - create your Pokemon!
-/attack - attack other's Pokemon in TG group
-/feed - regenerate your HP
-/info - info about your Pokemon
-
-```
 
