@@ -2,14 +2,14 @@
 
 ## bot commands are:
 ```
-go
+go - create your Pokemon
 ```
 ```
-attack
+attack - attack other's Pokemon
 ```
 ```
-feed
+feed - feed and by that increase your Pokemon's health
 ```
 ```
-info
+info - shows info about your Pokemon
 ```
