@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 class Pokemon:
     pokemons = {}
-    # Инициализация объекта (конструктор)
+    # Object initialization (constructor)
     def __init__(self, pokemon_trainer):
 
         self.pokemon_trainer = pokemon_trainer   
@@ -19,7 +19,7 @@ class Pokemon:
         Pokemon.pokemons[pokemon_trainer] = self
 
         
-    # Метод для получения картинки покемона через API
+    # Method for getting Pokemon image via API
     def get_img(self):
         url = f'https://pokeapi.co/api/v2/pokemon/{self.pokemon_number}'
         response = requests.get(url)
@@ -29,7 +29,7 @@ class Pokemon:
         else:
             return "Pikachu"
         
-    # Метод для получения имени покемона через API
+    # Method for getting Pokemon name via API
     def get_name(self):
         url = f'https://pokeapi.co/api/v2/pokemon/{self.pokemon_number}'
         response = requests.get(url)
@@ -40,27 +40,25 @@ class Pokemon:
             return "Pikachu"
 
 
-    # Метод класса для получения информации
+    # Class method for getting information
     def info(self):
-        return f"Имя твоего покемона: {self.name}, сила твоего покемона: {self.power}, здоровье твоего покемона: {self.hp}"
+        return f"Your Pokemon's name: {self.name}, your Pokemon's strength: {self.power}, your Pokemon's health: {self.hp}"
 
-
-    
-    # Метод класса для получения картинки покемона
+    # Class method for getting a picture of a Pokemon
     def show_img(self):
         return self.img
     
     def attack(self, enemy):
-        if isinstance(enemy, Wizard): # Проверка на то, что enemy является типом данных Wizard (является экземпляром класса Волшебник)
+        if isinstance(enemy, Wizard): # Check that the enemy is of type Wizard (is an instance of the Wizard class)
             chance = randint(1,5)
             if chance == 1:
-                return "Покемон-волшебник применил щит в сражении"
+                return "The Wizard Pokemon used a shield in battle."
         if enemy.hp > self.power:
             enemy.hp -= self.power
-            return f"Сражение @{self.pokemon_trainer} с @{enemy.pokemon_trainer}"
+            return f"Fighting @{self.pokemon_trainer} with @{enemy.pokemon_trainer}"
         else:
             enemy.hp = 0
-            return f"Победа @{self.pokemon_trainer} над @{enemy.pokemon_trainer}! "
+            return f"Victory @{self.pokemon_trainer} over @{enemy.pokemon_trainer}! "
         
     def feed(self, feed_interval = 20, hp_increase = 10 ):
         current_time = datetime.now()  
@@ -68,9 +66,9 @@ class Pokemon:
         if (current_time - self.last_feed_time) > delta_time:
             self.hp += hp_increase
             self.last_feed_time = current_time
-            return f"Здоровье покемона увеличено. Текущее здоровье: {self.hp}"
+            return f"Pokemon's health has been increased. Current health: {self.hp}"
         else:
-            return f"Следующее время кормления покемона: {self.last_feed_time+delta_time}"
+            return f"Next time to feed your Pokemon: {self.last_feed_time+delta_time}"
     
 class Wizard(Pokemon):
     def feed(self):
@@ -82,7 +80,7 @@ class Fighter(Pokemon):
         self.power += super_power
         res = super().attack(enemy)
         self.power -= super_power
-        return res + f"\nБоец применил супер-атаку силой:{super_power} "
+        return res + f"\nThe fighter used a super attack with force: {super_power} "
     
     def feed(self):
         return super().feed(feed_interval=10)
