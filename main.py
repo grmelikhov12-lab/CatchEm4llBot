@@ -18,7 +18,7 @@ def start(message):
         bot.send_message(message.chat.id, pokemon.info())
         bot.send_photo(message.chat.id, pokemon.show_img())
     else:
-        bot.reply_to(message, "Ты уже создал себе покемона")
+        bot.reply_to(message, "You've already created your own Pokemon.")
 
 
 @bot.message_handler(commands=['attack'])
@@ -30,9 +30,9 @@ def attack_pok(message):
             res = pok.attack(enemy)
             bot.send_message(message.chat.id, res)
         else:
-            bot.send_message(message.chat.id, "Сражаться можно только с покемонами")
+            bot.send_message(message.chat.id, "You can only fight with Pokemon.")
     else:
-            bot.send_message(message.chat.id, "Чтобы атаковать, нужно ответить на сообщения того, кого хочешь атаковать")
+            bot.send_message(message.chat.id, "To attack, you need to reply to the messages of the Pokemon you want to attack.")
 
 @bot.message_handler(commands=['feed'])
 def feed_pok(message):
@@ -41,7 +41,7 @@ def feed_pok(message):
         res=pok.feed()
         bot.send_message(message.chat.id, res)
     else:
-        bot.send_message(message.user.id, "У вас нет покемона")
+        bot.send_message(message.user.id, "You don't have a Pokemon.")
 
 
 @bot.message_handler(commands=['info'])
