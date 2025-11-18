@@ -1,6 +1,6 @@
 # TeleBot Pokemon bot
 
-## Some basic bot commands are:
+## bot commands are:
 ```
 go
 attack
